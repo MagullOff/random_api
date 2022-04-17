@@ -1,0 +1,4 @@
+[config]
+tag="funny"
+rocket_port=5000
+db_url="postgres://postgres:postgres@localhost/api-db"

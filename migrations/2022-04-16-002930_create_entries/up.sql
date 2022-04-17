@@ -1,0 +1,5 @@
+CREATE TABLE entries (
+    id uuid NOT NULL PRIMARY KEY,
+    url VARCHAR NOT NULL,
+    date TIMESTAMP NOT NULL
+);

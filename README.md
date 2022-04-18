@@ -4,7 +4,7 @@ jak uruchomić
 ```
 git clone https://github.com/MagullOff/random_api && cd random_api
 ```
-2. instalacja rusta (https://www.rust-lang.org/tools/install) i upewnienie się że system jest aktualny oraz zainstalowany jest pakiet build-essential, libpq-dev
+2. instalacja rusta (https://www.rust-lang.org/tools/install) i upewnienie się że system jest aktualny oraz zainstalowany jest pakiet build-essential i libpq-dev
 3. zmiana na wersje nightly
 ```
 rustup default nightly

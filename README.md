@@ -9,7 +9,7 @@ git clone https://github.com/MagullOff/random_api && cd random_api
 ```
 rustup default nightly
 ```
-4. instalacja postgreSQL
+4. instalacja postgreSQL (powinien być zainstalowany na ubuntu)
 5. instalacja diesel_cli
 ```
 cargo install diesel_cli --no-default-features --features postgres

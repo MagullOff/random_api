@@ -4,12 +4,12 @@ jak uruchomić
 ```
 git clone https://github.com/MagullOff/random_api && cd random_api
 ```
-2. instalacja rusta (https://www.rust-lang.org/tools/install)
+2. instalacja rusta (https://www.rust-lang.org/tools/install) i upewnienie się że system jest aktualny oraz zainstalowany jest pakiet build-essential, libpq-dev
 3. zmiana na wersje nightly
 ```
 rustup default nightly
 ```
-4. instalacja postgreSQL (powinien być zainstalowany na ubuntu)
+4. instalacja i uruchomienie postgreSQL (powinien być zainstalowany na ubuntu)
 5. instalacja diesel_cli
 ```
 cargo install diesel_cli --no-default-features --features postgres
@@ -23,9 +23,13 @@ diesel migration redo
 ```
 7. pliki konfiguracyjne
 Zarówno powyższa komenda jak i plik Config.toml z repozytorium zakłada że hasło i login do postgresa to postgres i postgres. Należy to zamienić na faktyczne dane przed uruchomieniem
-8. uruchom aplikacje
+8. uruchomienie testów 
+```
+cargo test
+```
+9. uruchom aplikacje
 ```
 cargo build && cargo run
 ```
-9. użycie
+10. użycie
 aplikacja została napisana tak, aby znaleziony obrazek był wyświetlany w przeglądarce po zakończeniu requesta

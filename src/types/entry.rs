@@ -13,6 +13,12 @@ pub struct Entry {
     pub date: SystemTime,
 }
 
+impl PartialEq for Entry {
+    fn eq(&self, other: &Self) -> bool {
+        self.url==other.url && self.id == other.id 
+    }
+}
+
 impl Entry {
     pub fn new(url: String) -> Entry {
         Entry{

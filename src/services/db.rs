@@ -13,5 +13,4 @@ pub fn get_all_entries(conn: DBPool) -> Result<Vec<ReturnEntry>, &'static str> {
                 .map(|e| ReturnEntry::new(e))
                 .collect())
         })
-        .map_err(|e| e)
 }

@@ -3,6 +3,8 @@ use crate::types::entry::Entry;
 use diesel::{self, PgConnection};
 use diesel::prelude::*; 
 
+//decided not to make a new repository folder 
+//as there is not much code to put in there
 pub fn insert_new(new_entry: Entry, conn: &PgConnection) -> Result<Entry, &'static str> {
     diesel::insert_into(all_entries)
         .values(&new_entry)

@@ -12,13 +12,14 @@ pub struct Config {
 }
 
 #[derive(Deserialize)]
-pub struct FileStruct{
+struct FileStruct{
     pub config: Config
 }
 
 lazy_static! {
     static ref SUBREDDIT: Mutex<String> = Mutex::new(String::new());
 }
+
 impl Config {
     pub fn get_subreddit() -> String{
         SUBREDDIT.lock().unwrap().clone()
@@ -26,8 +27,8 @@ impl Config {
 
     pub fn get_config() -> ConfigType {
         let config_file = fs::read_to_string("Config.toml").unwrap();
-        let config: FileStruct= toml::from_str(&config_file).unwrap();
-        *SUBREDDIT.lock().unwrap() = config.config.tag.clone();
-        return config.config;
+        let file_struct: FileStruct= toml::from_str(&config_file).unwrap();
+        *SUBREDDIT.lock().unwrap() = file_struct.config.tag.clone();
+        return file_struct.config;
     }
 }

@@ -6,35 +6,40 @@ use std::collections::HashMap;
 use crate::types::DBPool;
 use crate::types::config::Config as ConfigStruct;
 
+fn get_cors() -> CorsOptions {
+    CorsOptions::default()
+        .allowed_origins(AllowedOrigins::all())
+        .allowed_methods(
+            vec![Method::Get]
+            .into_iter()
+            .map(From::from)
+            .collect(),
+        )
+        .allow_credentials(true)
+}
 
-pub fn init() -> Rocket {
-    
-    let config = ConfigStruct::get_config();
-
+fn build_config(config: ConfigStruct) -> Config {
     let mut database_config = HashMap::new();
     let mut databases = HashMap::new();
 
     database_config.insert("url", config.db_url);
     databases.insert("api-db", Value::from(database_config));
     let port_number: u16 = config.rocket_port;
-         
-    let config = Config::build(Environment::Staging)
+
+    Config::build(Environment::Staging)
         .port(port_number)
         .extra("databases", databases)
         .finalize()
-        .unwrap();
+        .unwrap()
+}
 
-    let cors = CorsOptions::default()
-        .allowed_origins(AllowedOrigins::all())
-        .allowed_methods(
-            vec![
-                Method::Get,
-            ]
-            .into_iter()
-            .map(From::from)
-            .collect(),
-        )
-        .allow_credentials(true);
+pub fn init() -> Rocket {
+    
+    let file_config = ConfigStruct::get_config();
+
+    let config = build_config(file_config);
+
+    let cors = get_cors();
 
     rocket::custom(config)
         .attach(cors.to_cors().unwrap())

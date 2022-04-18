@@ -21,7 +21,8 @@ diesel setup
 diesel migration run
 diesel migration redo
 ```
-7. pliki konfiguracyjne
+7. pliki konfiguracyjne 
+
 Zarówno powyższa komenda jak i plik Config.toml z repozytorium zakłada że hasło i login do postgresa to postgres i postgres. Należy to zamienić na faktyczne dane przed uruchomieniem
 8. uruchomienie testów 
 ```
